@@ -23,6 +23,7 @@ public class MakingFarm_6198 {
             stack.push(h);
             sum += stack.size() - 1;
             // 0 1 1 2 0 1
+            // 5 3 2 4 9 7
         }
     }
 }
