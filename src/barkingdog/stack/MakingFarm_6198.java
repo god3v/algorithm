@@ -25,5 +25,6 @@ public class MakingFarm_6198 {
             // 0 1 1 2 0 1
             // 5 3 2 4 9 7
         }
+        System.out.println(sum);
     }
 }
