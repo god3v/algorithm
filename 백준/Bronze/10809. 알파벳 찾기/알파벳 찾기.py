@@ -1,7 +1,7 @@
 string = list(input())
-char = 'abcdefghijklmnopqrstuvwxyz'
+alphabet_array = 'abcdefghijklmnopqrstuvwxyz'
 
-for i in char:
+for i in alphabet_array:
     if i in string:
         print(string.index(i), end = ' ')
     else:
