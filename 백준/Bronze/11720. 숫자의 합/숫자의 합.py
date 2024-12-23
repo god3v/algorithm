@@ -13,3 +13,9 @@ for i in sNum:
 
 # 5. sum 출력하기
 print(result)
+
+#==========
+# N = int(input())
+
+# sNum = list(map(int, input()))
+# print(sum(sNum))
