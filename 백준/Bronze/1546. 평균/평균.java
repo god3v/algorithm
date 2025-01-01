@@ -10,7 +10,6 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
-        int[] arr = new int[N];
 
         // 2. 각 과목의 성적을 N 크기의 1차원 배열에 입력받는다.
         /*
@@ -27,7 +26,6 @@ public class Main {
             int grade = Integer.parseInt(st.nextToken());
             sum += grade;
             if (max < grade) max = grade;
-            arr[i] = grade;
         }
 
         // 3. 배열을 탐색하여 최고 점수와 점수의 총합을 구한다.
