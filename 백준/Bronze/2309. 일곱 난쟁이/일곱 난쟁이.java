@@ -10,37 +10,14 @@ public class Main {
 
         int N = 9;
         int[] arr = new int[N];
-        int sum = 0;
+        int total = 0;
 
         for (int i = 0; i < 9; i++) {
             arr[i] = Integer.parseInt(br.readLine());
-            sum += arr[i];
+            total += arr[i];
         }
 
         Arrays.sort(arr);
-
-        int left = 0;
-        int right = N - 1;
-
-        int idx1 = 0;
-        int idx2 = 0;
-
-        while (left < right) {
-            int A = arr[left];
-            int B = arr[right];
-            if (sum - (A + B) > 100) {
-                left++;
-            }
-            else if (sum - (A + B) < 100) {
-                right--;
-            }
-            else {
-                idx1 = left;
-                idx2 = right;
-                break;
-            }
-        }
-        /*
 
         int left = 0;
         int right = N - 1;
@@ -59,13 +36,6 @@ public class Main {
                 right--;
             } else {
                 left++;
-            }
-        }
-         */
-
-        for (int i = 0; i < 9; i++) {
-            if (i != idx1 && i != idx2) {
-                System.out.println(arr[i]);
             }
         }
     }
