@@ -8,7 +8,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int[] arr = new int[9];
+        int N = 9;
+        int[] arr = new int[N];
         int sum = 0;
 
         for (int i = 0; i < 9; i++) {
@@ -18,23 +19,52 @@ public class Main {
 
         Arrays.sort(arr);
 
-        int val1 = 0;
-        int val2 = 0;
+        int left = 0;
+        int right = N - 1;
 
-        for (int i = 0; i < 9; i++) {
-            for (int j = i + 1; j < 9; j++) {
-                int A = arr[i];
-                int B = arr[j];
+        int idx1 = 0;
+        int idx2 = 0;
 
-                if (sum - (A + B) == 100) {
-                    val1 = i;
-                    val2 = j;
-                    break;
-                }
+        while (left < right) {
+            int A = arr[left];
+            int B = arr[right];
+            if (sum - (A + B) > 100) {
+                left++;
+            }
+            else if (sum - (A + B) < 100) {
+                right--;
+            }
+            else {
+                idx1 = left;
+                idx2 = right;
+                break;
             }
         }
+        /*
+
+        int left = 0;
+        int right = N - 1;
+
+        int target = total - 100;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+            if (sum == target) {
+                for (int i = 0; i < N; i++) {
+                    if (i == left || i == right) continue;
+                    System.out.println(arr[i]);
+                }
+                break;
+            } else if (sum > target) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+         */
+
         for (int i = 0; i < 9; i++) {
-            if (i != val1 && i != val2) {
+            if (i != idx1 && i != idx2) {
                 System.out.println(arr[i]);
             }
         }
