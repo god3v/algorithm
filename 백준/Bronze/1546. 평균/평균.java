@@ -1,37 +1,41 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                      :::    :::    :::     */
+/*   Problem Number: 1546                              :+:    :+:      :+:    */
+/*                                                    +:+    +:+        +:+   */
+/*   By: sooon9254 <boj.kr/u/sooon9254>              +#+    +#+          +#+  */
+/*                                                  +#+      +#+        +#+   */
+/*   https://boj.kr/1546                           #+#        #+#      #+#    */
+/*   Solved: 2025/12/03 19:18:06 by sooon9254     ###          ###   ##.kr    */
+/*                                                                            */
+/* ************************************************************************** */
+
+import java.io.*;
 import java.util.StringTokenizer;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        // 1. 과목의 개수 N 을 입력받는다.
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
+       // 1. 과목의 개수 N이 주어진다. N <= 1000
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       int N = Integer.parseInt(br.readLine());
 
-        // 2. 각 과목의 성적을 N 크기의 1차원 배열에 입력받는다.
-        /*
-        for (배열의 크기만큼 반복) {
-            배열[i]에 각 점수 저장
-        }
-         */
-        int sum = 0;
-        int max = 0;
+       // 2. 현재 성적이 주어진다. 0 < score <= 100
+       int max = 0;
+       int sum = 0;
 
+       // N만큼 배열에 점수를 초기화하고, 가장 높은 점수 값을 구한다.
         StringTokenizer st = new StringTokenizer(br.readLine());
-
-        for (int i=0; i<N; i++) {
-            int grade = Integer.parseInt(st.nextToken());
-            sum += grade;
-            if (max < grade) max = grade;
+        for (int i = 0; i < N; i++) {
+            int score = Integer.parseInt(st.nextToken());
+            if (score > max) max = score;
+            sum += score;
         }
 
-        // 3. 배열을 탐색하여 최고 점수와 점수의 총합을 구한다.
-
-        // 4. 총합 * 100 / 최고 점수 / 과목의 수를 계산해 다시 계산한 점수의 평균 값을 출력한다.
-        // sum * 100 / max / N
+       // 3. 새로운 평균을 출력한다.
+       // 정답과 출력값의 절대오차 또는 상대오차가 10-2 이하
         System.out.println(sum * 100.0 / max / N);
+
     }
 }
