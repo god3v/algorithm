@@ -2,45 +2,52 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        // N: 배열 크기, M: 질의 수
+        /*
+        read N M
+        D = int[N + 1][N + 1]
+
+        for i in 1..N
+            for j in 1..N
+                read int
+                D[i][j] = D[i][j-1] + D[i-1][j] - D[i-1][j-1] + int
+
+        for i in 0..M-1
+            read X1, Y1, X2, Y2
+            result = D[X2][Y2] - D[X1-1][Y2] - D[X2][Y1-1] + D[X1-1][Y1-1]
+         */
+
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        // 원본 배열 저장하기
-        int[][] array = new int[N + 1][N + 1];
+        int[][] D = new int[N + 1][N + 1];
 
-        for (int i=1; i<=N; i++) {
+        for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j=1; j<=N; j++) {
-                array[i][j] = Integer.parseInt(st.nextToken());
+            for (int j = 1; j <= N; j++) {
+                int num = Integer.parseInt(st.nextToken());
+                D[i][j] = D[i][j-1] + D[i-1][j] - D[i-1][j-1] + num;
             }
         }
 
-        // 합 배열 저장하기
-        int[][] sArr = new int[N + 1][N + 1];
-        for (int i=1; i<=N; i++) {
-            for (int j=1; j<=N; j++) {
-                sArr[i][j] = sArr[i][j - 1] + sArr[i - 1][j] - sArr[i - 1][j - 1] + array[i][j];
-            }
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            int X1 = Integer.parseInt(st.nextToken());
+            int Y1 = Integer.parseInt(st.nextToken());
+            int X2 = Integer.parseInt(st.nextToken());
+            int Y2 = Integer.parseInt(st.nextToken());
+
+            int result = D[X2][Y2] - D[X1-1][Y2] - D[X2][Y1-1] + D[X1-1][Y1-1];
+            bw.write(String.valueOf(result));
+            bw.newLine();
         }
 
-        // 질의 계산 및 출력
-        for (int i=0; i<M; i++) {
-            st = new StringTokenizer(br.readLine());
-            int x1 = Integer.parseInt(st.nextToken());
-            int y1 = Integer.parseInt(st.nextToken());
-            int x2 = Integer.parseInt(st.nextToken());
-            int y2 = Integer.parseInt(st.nextToken());
-            int result = sArr[x2][y2] - sArr[x1 - 1][y2] - sArr[x2][y1 - 1] + sArr[x1 - 1][y1 - 1];
-            bw.write(result + "\n");
-        }
         bw.flush();
-        bw.close();
     }
 }
