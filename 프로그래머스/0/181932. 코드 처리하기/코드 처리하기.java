@@ -11,9 +11,7 @@ class Solution {
                 continue;
             }
 
-            if (mode == 0 && i % 2 == 0) {
-                ret.append(current);
-            } else if (mode == 1 & i % 2 != 0) {
+            if (i % 2 == mode) {
                 ret.append(current);
             }
         }
