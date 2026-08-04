@@ -1,5 +1,5 @@
 class Solution {
-    public int solution(int a, int d, boolean[] included) {
+        public int solution(int a, int d, boolean[] included) {
         /**
          * 첫째항 a
          * 공차 d
@@ -15,11 +15,10 @@ class Solution {
 
         int answer = 0;
 
-        for (boolean b : included) {
-            if (b) {
-                answer += a;
+        for (int i = 0; i < included.length; i++) {
+            if (included[i]) {
+                answer += a + (d * i);
             }
-            a += d;
         }
         return answer;
     }
